@@ -139,16 +139,32 @@ int main(int argc, char **argv)
             head->data = toupper(tmp); // inserting data in uppercase
             */
             char tmp = fgetc(inFile);
+            if (isdigit(tmp))
+            {
+                printf("Counter: %d %c\n", counter, tmp);
+                char tmp2 = tmp;
+                // int toNumber = atoi(tmp2);
+                int toNumber = tmp2;
+                //   int toNumber = (int)tmp;
+                fileArray[counter] = toNumber;
+                // fileArray[counter] = (int)(tmp);
+                //  printf("Counter: %d %c", counter, tmp);
+                //   int convertInt = atoi(tmp); // seg fault
+                //   printf("ConvertInt: %d\n", convertInt);
+                counter++;
+            }
             // tmp2 = tmp;
             // int convertInt = atoi(tmp);
             // printf(" %d ", convertInt);
-            printf("%c ", tmp);
+            // printf("%c ", tmp);
 
-            fileArray[counter] = (int)(tmp);
-            // fileArray[counter] = atoi((tmp)); // seg fault as written
+            // fileArray[counter] = (int)(tmp);
+            //  fileArray[counter] = atoi((tmp)); // seg fault as written
 
-            printf("%d", fileArray[counter]);
-            counter++;
+            // printf("%d", fileArray[counter]);
+            // printf("%d ", counter);
+            // counter++;
+
             if (feof(inFile))
             {
                 break;
@@ -178,6 +194,11 @@ int main(int argc, char **argv)
 
     printf("File successfuly created\n");
     */
+
+    for (int i = 0; i < 12; i++)
+    {
+        printf("FileArray %d: %d\n", i, fileArray[i]);
+    }
 
     return 0;
 }
