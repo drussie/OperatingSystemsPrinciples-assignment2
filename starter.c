@@ -83,7 +83,7 @@ int main(int argc, char **argv)
     FILE *inFile = NULL; // file pointer
     // FILE outFile;		 // file to be printed to
     int closeStatus;
-    int fileArray[11];
+    int fileArray[21];
     // int counter = 0;
     //  int convertInt = 0;
     //  char tmp2;
@@ -138,14 +138,18 @@ int main(int argc, char **argv)
             char tmp = fgetc(inFile);  // reading character
             head->data = toupper(tmp); // inserting data in uppercase
             */
-            char tmp = fgetc(inFile);
+            ;
+            ;
+            // char tmp = fgetc(inFile);
+            char *tmp = fgetc(inFile);
             if (isdigit(tmp))
             {
                 printf("Counter: %d %c\n", counter, tmp);
-                char tmp2 = tmp;
+                // char tmp2 = tmp;
                 // int toNumber = atoi(tmp2);
-                int toNumber = tmp2;
-                //   int toNumber = (int)tmp;
+                int toNumber = tmp - 48;
+                // int toNumber = tmp2;
+                //    int toNumber = (int)tmp;
                 fileArray[counter] = toNumber;
                 // fileArray[counter] = (int)(tmp);
                 //  printf("Counter: %d %c", counter, tmp);
