@@ -84,7 +84,9 @@ int main(int argc, char **argv)
     // FILE outFile;		 // file to be printed to
     int closeStatus;
     int fileArray[11];
-    int counter = 0;
+    // int counter = 0;
+    //  int convertInt = 0;
+    //  char tmp2;
 
     /*
         NODE *head = NULL; // create NODE objects
@@ -129,6 +131,7 @@ int main(int argc, char **argv)
     printf("Reading characters.\n");
     if (optind < argc)
     {
+        int counter = 0;
         do
         {
             /*
@@ -136,9 +139,16 @@ int main(int argc, char **argv)
             head->data = toupper(tmp); // inserting data in uppercase
             */
             char tmp = fgetc(inFile);
-            fileArray[counter] = tmp;
+            // tmp2 = tmp;
+            // int convertInt = atoi(tmp);
+            // printf(" %d ", convertInt);
+            printf("%c ", tmp);
 
-            printf("%c, %d", tmp, fileArray[counter]);
+            fileArray[counter] = (int)(tmp);
+            // fileArray[counter] = atoi((tmp)); // seg fault as written
+
+            printf("%d", fileArray[counter]);
+            counter++;
             if (feof(inFile))
             {
                 break;
