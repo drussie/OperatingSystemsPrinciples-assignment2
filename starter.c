@@ -70,6 +70,49 @@ typedef struct
     int arrivalime;
 } Process;
 
+int fcfs(int processes, int array[])
+{
+    int arrivalArray[processes + 1];
+    // populate process numbers
+    for (int i = 0; i < processes; i++)
+    {
+        arrivalArray[i] = i + 1;
+    }
+    // Process order
+    for (int j = 0; j < processes; j++)
+    {
+        int min = array[0];
+        int minIndex = 0;
+        for (int k = j; k < processes; k++)
+        {
+            if (array[k] < min)
+            {
+                arrivalArray[k] = k;
+            }
+        }
+        for (int l = 0; l < processes; l++)
+        {
+            printf("Process %d = %d\n", l, arrivalArray[l]);
+        }
+    }
+
+    // Average waiting time
+
+    // Average turnaround time
+
+    return 0;
+}
+
+int SJF(int processes, int array[])
+{
+
+    // Process order
+
+    // Average waiting time
+
+    // Average turnaround time
+}
+
 int debug = 0;
 
 int main(int argc, char **argv)
@@ -84,6 +127,8 @@ int main(int argc, char **argv)
     // FILE outFile;		 // file to be printed to
     int closeStatus;
     int fileArray[21];
+    int numProcesses = 0;
+
     // int counter = 0;
     //  int convertInt = 0;
     //  char tmp2;
@@ -144,10 +189,10 @@ int main(int argc, char **argv)
             char *tmp = fgetc(inFile);
             if (isdigit(tmp))
             {
-                printf("Counter: %d %c\n", counter, tmp);
+                printf("Counter: %d value: %c\n", counter, tmp);
                 // char tmp2 = tmp;
                 // int toNumber = atoi(tmp2);
-                int toNumber = tmp - 48;
+                int toNumber = tmp - 48; // Convert Ascii to int value
                 // int toNumber = tmp2;
                 //    int toNumber = (int)tmp;
                 fileArray[counter] = toNumber;
@@ -199,10 +244,16 @@ int main(int argc, char **argv)
     printf("File successfuly created\n");
     */
 
+    numProcesses = fileArray[0];
+    printf("numProcesses: %d\n\n", numProcesses);
+
     for (int i = 0; i < 12; i++)
     {
         printf("FileArray %d: %d\n", i, fileArray[i]);
     }
+    printf("\n");
+
+    fcfs(numProcesses, fileArray);
 
     return 0;
 }
