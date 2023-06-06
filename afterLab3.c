@@ -48,7 +48,7 @@ void bubbleSortSjf(int processNumbers[], int bursts[], int arrivals[], int len)
         }
     }
 }
-
+// First Come First Serve
 void fcfs(int processes)
 {
     int i;
