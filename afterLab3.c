@@ -50,6 +50,57 @@ void bubbleSortSjf(int processNumbers[], int bursts[], int arrivals[], int len)
     }
 }
 
+// bubblesort Shortest Job First Works!!
+void bubbleSortSjf2(int processNumbers[], int bursts[], int arrivals[], int len)
+{
+    int i, j, temp;
+    int currentProcessEnd = 0;
+
+    for (i = 0; i < len - 1; i++)
+    {
+        for (j = 0; j < len - 1 - i; j++)
+        {
+            // sort by arrival time
+            if (bursts[j] > bursts[j + 1])
+            {
+                temp = arrivals[j];
+                arrivals[j] = arrivals[j + 1];
+                arrivals[j + 1] = temp;
+
+                temp = bursts[j];
+                bursts[j] = bursts[j + 1];
+                bursts[j + 1] = temp;
+
+                temp = processNumbers[j];
+                processNumbers[j] = processNumbers[j + 1];
+                processNumbers[j + 1] = temp;
+            }
+        }
+    }
+
+    for (i = 0; i < len - 1; i++)
+    {
+        for (j = 0; j < len - 1 - i; j++)
+        {
+            // sort by arrival time
+            if (arrivals[j] > arrivals[j + 1])
+            {
+                temp = arrivals[j];
+                arrivals[j] = arrivals[j + 1];
+                arrivals[j + 1] = temp;
+
+                temp = bursts[j];
+                bursts[j] = bursts[j + 1];
+                bursts[j + 1] = temp;
+
+                temp = processNumbers[j];
+                processNumbers[j] = processNumbers[j + 1];
+                processNumbers[j + 1] = temp;
+            }
+        }
+    }
+}
+
 // First Come First Serve
 void fcfs(int processes)
 {
@@ -104,7 +155,7 @@ int main(int argc, char *argv[])
 
     // bubbleSort(arrivalTime, numProcesses);
     printf("\n");
-    bubbleSortSjf(processArray, burstTime, arrivalTime, numProcesses);
+    bubbleSortSjf2(processArray, burstTime, arrivalTime, numProcesses);
 
     for (int k = 0; k < numProcesses; k++)
     {
