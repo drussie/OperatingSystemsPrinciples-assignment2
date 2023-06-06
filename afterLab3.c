@@ -71,6 +71,7 @@ int main(int argc, char *argv[])
     fscanf(fp, "%d", &numProcesses);
     // printf("Number of processes: %d\n", numProcesses);
 
+    // Populate processArray with appropriate consecutive integers
     for (int i = 0; i < numProcesses; i++)
     {
         processArray[i] = i + 1;
