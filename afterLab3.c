@@ -61,12 +61,6 @@ void fcfs(int processes)
 
 int main(int argc, char *argv[])
 {
-    /*printf("argc is %d\n);
-    for(int i = 0; i < argc; i++)
-    {
-        printf("argv[%d] is : %s\n", i, argv[i]);
-    }*/
-
     FILE *fp = NULL;
     int processArray[256]; // 1
     int burstTime[256];
