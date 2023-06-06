@@ -21,6 +21,7 @@ void bubbleSort(int arr[], int len)
         }
     }
 }
+
 // bubblesort Shortest Job First
 void bubbleSortSjf(int processNumbers[], int bursts[], int arrivals[], int len)
 {
@@ -48,6 +49,7 @@ void bubbleSortSjf(int processNumbers[], int bursts[], int arrivals[], int len)
         }
     }
 }
+
 // First Come First Serve
 void fcfs(int processes)
 {
