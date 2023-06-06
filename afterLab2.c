@@ -28,10 +28,8 @@ int main(int argc, char *argv[])
     }*/
 
     FILE *fp = NULL;
-    // char buff[256];
-    // char buff2[256];
-    int buff[256];
-    int buff2[256];
+    int burstTime[256];
+    int arrivalTime[256];
     int numProcesses = 0;
     // char numProcesses[50];
 
@@ -41,13 +39,13 @@ int main(int argc, char *argv[])
 
     for (int i = 0; i < numProcesses; i++)
     {
-        /*fscanf(fp, "%s %s", buff, buff2);
-        printf("The burst time is: %s, The arrival time is: %s\n", buff, buff2); */
-        fscanf(fp, "%d %d", &buff[i], &buff2[i]);
-        printf("The burst time is: %d, The arrival time is: %d\n", buff[i], buff2[i]);
+        fscanf(fp, "%d %d", &burstTime[i], &arrivalTime[i]);
+        printf("Process number: %d The burst time is: %d, The arrival time is: %d\n",
+               i + 1, burstTime[i], arrivalTime[i]);
     }
-
+    printf("\n");
     /* Implement your own code */
+    printf("Process 2 data are: %d %d\n", burstTime[1], arrivalTime[1]);
     printf("P1->P2_>P3\n");
     printf("The average waiting time is: \n");
     printf("Tge average turnaround time is: \n");
