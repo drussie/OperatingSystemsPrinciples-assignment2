@@ -49,13 +49,14 @@ void bubbleSortSjf(int processNumbers[], int bursts[], int arrivals[], int len)
     }
 }
 
-void fcfs(int numProcesses)
+void fcfs(int processes)
 {
-    for (int i = 0; i < numProcesses - 1; i++)
+    int i;
+    for (i = 0; i < processes - 1; i++)
     {
         printf("P%d->", i + 1);
     }
-    printf("P%d\n", numProcesses);
+    printf("P%d\n", processes);
 }
 
 int main(int argc, char *argv[])
