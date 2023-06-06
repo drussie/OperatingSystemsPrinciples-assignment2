@@ -4,52 +4,6 @@
 #include <string.h>
 #include <ctype.h>
 
-void bubbleSort(int arr[], int len)
-{
-    int i, j, temp;
-
-    for (i = 0; i < len - 1; i++)
-    {
-        for (j = 0; j < len - 1 - i; j++)
-        {
-            if (arr[j] > arr[j + 1])
-            {
-                temp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = temp;
-            }
-        }
-    }
-}
-
-// bubblesort Shortest Job First
-void bubbleSortSjf(int processNumbers[], int bursts[], int arrivals[], int len)
-{
-    int i, j, temp;
-
-    for (i = 0; i < len - 1; i++)
-    {
-        for (j = 0; j < len - 1 - i; j++)
-        {
-            // sort by arrival time
-            if (arrivals[j] > arrivals[j + 1])
-            {
-                temp = arrivals[j];
-                arrivals[j] = arrivals[j + 1];
-                arrivals[j + 1] = temp;
-
-                temp = bursts[j];
-                bursts[j] = bursts[j + 1];
-                bursts[j + 1] = temp;
-
-                temp = processNumbers[j];
-                processNumbers[j] = processNumbers[j + 1];
-                processNumbers[j + 1] = temp;
-            }
-        }
-    }
-}
-
 // bubblesort Shortest Job First Works!!
 void bubbleSortSjf2(int processNumbers[], int bursts[], int arrivals[], int len)
 {
@@ -60,7 +14,7 @@ void bubbleSortSjf2(int processNumbers[], int bursts[], int arrivals[], int len)
     {
         for (j = 0; j < len - 1 - i; j++)
         {
-            // sort by arrival time
+            // sort by burst time
             if (bursts[j] > bursts[j + 1])
             {
                 temp = arrivals[j];
@@ -128,6 +82,7 @@ int main(int argc, char *argv[])
     int burstTime[256];
     int arrivalTime[256];
     int numProcesses = 0;
+    char argument2[256];
 
     fp = fopen(argv[1], "r");
     fscanf(fp, "%d", &numProcesses);
@@ -153,18 +108,28 @@ int main(int argc, char *argv[])
                j + 1, burstTime[j], arrivalTime[j]);
     }
     printf("\n");
+    strcpy(argument2, argv[2]);
+    printf("ARGV[2]: %s\n", argument2);
 
-    fcfs(numProcesses);
-    /* Implement your own code */
-    // printf("Process 2 data are: %d %d\n\n", burstTime[1], arrivalTime[1]);
-    // printf("P1->P2->P3\n");
-    printf("The average waiting time is: \n");
-    printf("The average turnaround time is: \n");
-    // printf("Numprocesses = %d\n", numProcesses);
-
-    // bubbleSort(arrivalTime, numProcesses);
-    printf("\n");
-    bubbleSortSjf2(processArray, burstTime, arrivalTime, numProcesses);
+    if (strcmp(argument2, "fcfs") == 0)
+    {
+        printf("First Come First Serve: ");
+        fcfs(numProcesses);
+        // Implement your own code below
+        // printf("Process 2 data are: %d %d\n\n", burstTime[1], arrivalTime[1]);
+        // printf("P1->P2->P3\n");
+        printf("The average waiting time is: \n");
+        printf("The average turnaround time is: \n\n");
+    }
+    else if (strcmp(argument2, "sjf") == 0)
+    {
+        printf("\nShortest Job First: ");
+        bubbleSortSjf2(processArray, burstTime, arrivalTime, numProcesses);
+    }
+    else
+    {
+        printf("Please enter either 'fcfs' or 'sjf'.\n");
+    }
 
     for (int k = 0; k < numProcesses; k++)
     {
@@ -173,6 +138,6 @@ int main(int argc, char *argv[])
                burstTime[k],
                arrivalTime[k]);
     }
-
+    printf("\n");
     fclose(fp);
 }
