@@ -53,7 +53,7 @@ void bubbleSortSjf(int processNumbers[], int bursts[], int arrivals[], int len)
 // bubblesort Shortest Job First Works!!
 void bubbleSortSjf2(int processNumbers[], int bursts[], int arrivals[], int len)
 {
-    int i, j, temp;
+    int i, j, k, temp;
     int currentProcessEnd = 0;
 
     for (i = 0; i < len - 1; i++)
@@ -99,6 +99,15 @@ void bubbleSortSjf2(int processNumbers[], int bursts[], int arrivals[], int len)
             }
         }
     }
+    printf("P%d->", processNumbers[0]);
+
+    for (k = 1; k < len - 1; k++)
+    {
+        printf("P%d->", processNumbers[k]);
+    }
+    printf("P%d", processNumbers[len - 1]);
+
+    printf("\n\n");
 }
 
 // First Come First Serve
