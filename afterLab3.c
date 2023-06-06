@@ -24,7 +24,7 @@ void bubbleSort(int arr[], int len)
 // bubblesort Shortest Job First
 void bubbleSortSjf(int processNumbers[], int bursts[], int arrivals[], int len)
 {
-    int i, j, temp, temp2;
+    int i, j, temp;
 
     for (i = 0; i < len - 1; i++)
     {
@@ -41,9 +41,9 @@ void bubbleSortSjf(int processNumbers[], int bursts[], int arrivals[], int len)
                 bursts[j] = bursts[j + 1];
                 bursts[j + 1] = temp;
 
-                temp2 = processNumbers[j];
+                temp = processNumbers[j];
                 processNumbers[j] = processNumbers[j + 1];
-                processNumbers[j + 1] = temp2;
+                processNumbers[j + 1] = temp;
             }
         }
     }
