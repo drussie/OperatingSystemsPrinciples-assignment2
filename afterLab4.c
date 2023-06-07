@@ -81,13 +81,7 @@ int averageTurnaroundTime(int burst[], int arrivals[], int len)
     int sum = burst[0]; // sum of turnaround times
     int cpu = 0;        // where CPU currently is in terms of time
     int wait = 0;       // wait time
-                        /*
-                            printf("Process 1 sum: %d CPU: %d arrivals: %d wait: %d\n",
-                                   sum,
-                                   cpu,
-                                   arrivals[0],
-                                   wait);
-                        */
+
     cpu += burst[0];
     // printf("CPU: %d\n", cpu);
 
@@ -95,13 +89,6 @@ int averageTurnaroundTime(int burst[], int arrivals[], int len)
     {
         wait = cpu - arrivals[i];
         sum += wait + burst[i];
-        /*
-                printf("process %d sum: %d CPU: %d arrivals: %d wait: %d\n",
-                       i + 1, sum,
-                       cpu,
-                       arrivals[i],
-                       wait);
-                       */
     }
 
     return sum / len;
@@ -113,15 +100,7 @@ int averageWaitTime(int burst[], int arrivals[], int len)
     int sum = 0;
     int cpu = 0;  // Where cpu is in terms of time
     int wait = 0; // wait time
-                  /*
-                      printf("Process 1 sum: %d CPU: %d arrivals: %d wait: %d\n",
-                             sum,
-                             cpu,
-                             arrivals[0],
-                             wait);
-              
-                      printf("CPU: %d\n", cpu);
-                    */
+
     cpu = burst[0];
 
     for (int i = 1; i < len; i++)
@@ -129,13 +108,6 @@ int averageWaitTime(int burst[], int arrivals[], int len)
         wait = cpu - arrivals[i];
         cpu += burst[i];
         sum += wait;
-        /*
-                printf("process %d sum: %d CPU: %d arrivals: %d wait: %d\n",
-                       i + 1, sum,
-                       cpu,
-                       arrivals[i],
-                       wait);
-                       */
     }
 
     return sum / len;
@@ -162,8 +134,6 @@ int main(int argc, char *argv[])
     for (int j = 0; j < numProcesses; j++)
     {
         fscanf(fp, "%d %d", &burstTime[j], &arrivalTime[j]);
-        // printf("Process number: %d The burst time is: %d, The arrival time is: %d\n",
-        //      j + 1, burstTime[j], arrivalTime[j]);
     }
 
     strcpy(argument2, argv[2]);
@@ -190,16 +160,6 @@ int main(int argc, char *argv[])
     {
         printf("Please enter either 'fcfs' or 'sjf'.\n");
     }
-    /*
-        for (int k = 0; k < numProcesses; k++)
-        {
-            printf("Process number: %d The burst time is: %d The arrival time is: %d\n",
-                   processArray[k],
-                   burstTime[k],
-                   arrivalTime[k]);
-        }
 
-    printf("\n");
-    */
     fclose(fp);
 }
