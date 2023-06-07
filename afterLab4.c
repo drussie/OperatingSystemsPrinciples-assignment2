@@ -4,7 +4,7 @@
 #include <string.h>
 #include <ctype.h>
 
-// bubblesort Shortest Job First Works!!
+// bubblesort Shortest Job First
 void bubbleSortSjf2(int processNumbers[], int bursts[], int arrivals[], int len)
 {
     int i, j, k, temp;
@@ -83,7 +83,6 @@ int averageTurnaroundTime(int burst[], int arrivals[], int len)
     int wait = 0;       // wait time
 
     cpu += burst[0];
-    // printf("CPU: %d\n", cpu);
 
     for (int i = 1; i < len; i++) // work from process #2
     {
@@ -96,7 +95,6 @@ int averageTurnaroundTime(int burst[], int arrivals[], int len)
 
 int averageWaitTime(int burst[], int arrivals[], int len)
 {
-    // int sum = burst[0];
     int sum = 0;
     int cpu = 0;  // Where cpu is in terms of time
     int wait = 0; // wait time
