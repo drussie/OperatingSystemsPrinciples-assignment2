@@ -62,7 +62,7 @@ void bubbleSortSjf2(int processNumbers[], int bursts[], int arrivals[], int len)
     }
     printf("P%d", processNumbers[len - 1]);
 
-    printf("\n\n");
+    printf("\n");
 }
 
 // First Come First Serve
@@ -81,26 +81,27 @@ int averageTurnaroundTime(int burst[], int arrivals[], int len)
     int sum = burst[0]; // sum of turnaround times
     int cpu = 0;        // where CPU currently is in terms of time
     int wait = 0;       // wait time
-
-    printf("Process 1 sum: %d CPU: %d arrivals: %d wait: %d\n",
-           sum,
-           cpu,
-           arrivals[0],
-           wait);
-
+                        /*
+                            printf("Process 1 sum: %d CPU: %d arrivals: %d wait: %d\n",
+                                   sum,
+                                   cpu,
+                                   arrivals[0],
+                                   wait);
+                        */
     cpu += burst[0];
-    printf("CPU: %d\n", cpu);
+    // printf("CPU: %d\n", cpu);
 
     for (int i = 1; i < len; i++) // work from process #2
     {
         wait = cpu - arrivals[i];
         sum += wait + burst[i];
-
-        printf("process %d sum: %d CPU: %d arrivals: %d wait: %d\n",
-               i + 1, sum,
-               cpu,
-               arrivals[i],
-               wait);
+        /*
+                printf("process %d sum: %d CPU: %d arrivals: %d wait: %d\n",
+                       i + 1, sum,
+                       cpu,
+                       arrivals[i],
+                       wait);
+                       */
     }
 
     return sum / len;
@@ -112,14 +113,15 @@ int averageWaitTime(int burst[], int arrivals[], int len)
     int sum = 0;
     int cpu = 0;  // Where cpu is in terms of time
     int wait = 0; // wait time
-
-    printf("Process 1 sum: %d CPU: %d arrivals: %d wait: %d\n",
-           sum,
-           cpu,
-           arrivals[0],
-           wait);
-
-    printf("CPU: %d\n", cpu);
+                  /*
+                      printf("Process 1 sum: %d CPU: %d arrivals: %d wait: %d\n",
+                             sum,
+                             cpu,
+                             arrivals[0],
+                             wait);
+              
+                      printf("CPU: %d\n", cpu);
+                    */
     cpu = burst[0];
 
     for (int i = 1; i < len; i++)
@@ -127,12 +129,13 @@ int averageWaitTime(int burst[], int arrivals[], int len)
         wait = cpu - arrivals[i];
         cpu += burst[i];
         sum += wait;
-
-        printf("process %d sum: %d CPU: %d arrivals: %d wait: %d\n",
-               i + 1, sum,
-               cpu,
-               arrivals[i],
-               wait);
+        /*
+                printf("process %d sum: %d CPU: %d arrivals: %d wait: %d\n",
+                       i + 1, sum,
+                       cpu,
+                       arrivals[i],
+                       wait);
+                       */
     }
 
     return sum / len;

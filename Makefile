@@ -1,4 +1,4 @@
-all: starter afterLab afterLab2 afterLab3
+all: starter afterLab afterLab2 afterLab3 afterLab4
 
 starter: starter.o
 	cc -o starter starter.c 
@@ -10,7 +10,10 @@ afterLab2: afterLab2.o
 	cc -o afterLab2 afterLab2.c 	
 
 afterLab3: afterLab3.o
-	cc -o afterLab3 afterLab3.c 		
+	cc -o afterLab3 afterLab3.c 
+
+afterLab4: afterLab4.o
+	cc -o afterLab4 afterLab4.c 			
 
 V2: V2.o
 	cc -o V2 V2.c	
