@@ -14,8 +14,8 @@ void bubbleSortSjf2(int processNumbers[], int bursts[], int arrivals[], int len)
     {
         for (j = 0; j < len - 1 - i; j++)
         {
-            // sort by burst time
-            if (bursts[j] > bursts[j + 1])
+            // sort by arrival time
+            if (arrivals[j] > arrivals[j + 1])
             {
                 temp = arrivals[j];
                 arrivals[j] = arrivals[j + 1];
@@ -34,10 +34,10 @@ void bubbleSortSjf2(int processNumbers[], int bursts[], int arrivals[], int len)
 
     for (i = 0; i < len - 1; i++)
     {
-        for (j = 0; j < len - 1 - i; j++)
+        for (j = 1; j < len - 1 - i; j++)
         {
-            // sort by arrival time
-            if (arrivals[j] > arrivals[j + 1])
+            // sort by burst time
+            if (bursts[j] > bursts[j + 1])
             {
                 temp = arrivals[j];
                 arrivals[j] = arrivals[j + 1];
@@ -53,6 +53,7 @@ void bubbleSortSjf2(int processNumbers[], int bursts[], int arrivals[], int len)
             }
         }
     }
+
     printf("P%d->", processNumbers[0]);
 
     for (k = 1; k < len - 1; k++)
@@ -75,6 +76,41 @@ void fcfs(int processes)
     printf("P%d\n", processes);
 }
 
+int averageTurnaroundTime(int burst[], int arrivals[], int len)
+{
+    int sum = burst[0];
+    int bPointer = 0;
+    int wait = 0;
+    int updateWait = 0;
+
+    printf("Process 1 sum: %d bPointer: %d arrivals: %d wait: %d\n",
+           sum,
+           bPointer,
+           arrivals[0],
+           wait);
+
+    bPointer += burst[0];
+    printf("bPointer: %d\n", bPointer);
+
+    for (int i = 1; i < len; i++)
+    {
+        wait = bPointer - arrivals[i];
+        bPointer += burst[i];
+        // wait = wait + burst[i];
+        sum += wait + burst[i];
+
+        printf("process %d sum: %d bPointer: %d arrivals: %d wait: %d\n",
+               i + 1, sum,
+               bPointer,
+               arrivals[i],
+               wait);
+
+        // wait = 0;
+    }
+
+    return sum / len;
+}
+
 int main(int argc, char *argv[])
 {
     FILE *fp = NULL;
@@ -93,13 +129,6 @@ int main(int argc, char *argv[])
     {
         processArray[i] = i + 1;
     }
-    /*
-        printf("Process numbers\n");
-        for (int l = 0; l < numProcesses; l++)
-        {
-            printf(" %d\n", processArray[l]);
-        }
-        */
 
     for (int j = 0; j < numProcesses; j++)
     {
@@ -107,24 +136,28 @@ int main(int argc, char *argv[])
         printf("Process number: %d The burst time is: %d, The arrival time is: %d\n",
                j + 1, burstTime[j], arrivalTime[j]);
     }
-    printf("\n");
+
     strcpy(argument2, argv[2]);
-    printf("ARGV[2]: %s\n", argument2);
+    // printf("ARGV[2]: %s\n", argument2);
 
     if (strcmp(argument2, "fcfs") == 0)
     {
-        printf("First Come First Serve: ");
+        printf("\nFirst Come First Serve: ");
         fcfs(numProcesses);
         // Implement your own code below
         // printf("Process 2 data are: %d %d\n\n", burstTime[1], arrivalTime[1]);
         // printf("P1->P2->P3\n");
         printf("The average waiting time is: \n");
-        printf("The average turnaround time is: \n\n");
+        printf("The average turnaround time is: %d\n\n",
+               averageTurnaroundTime(burstTime, arrivalTime, numProcesses));
     }
     else if (strcmp(argument2, "sjf") == 0)
     {
         printf("\nShortest Job First: ");
         bubbleSortSjf2(processArray, burstTime, arrivalTime, numProcesses);
+        printf("The average waiting time is: \n");
+        printf("The average turnaround time is: %d\n\n",
+               averageTurnaroundTime(burstTime, arrivalTime, numProcesses));
     }
     else
     {
