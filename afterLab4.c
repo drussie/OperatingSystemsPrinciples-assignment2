@@ -95,7 +95,7 @@ int averageTurnaroundTime(int burst[], int arrivals[], int len)
 
 int averageWaitTime(int burst[], int arrivals[], int len)
 {
-    int sum = 0;
+    int sum = 0;  // sum of wat times
     int cpu = 0;  // Where cpu is in terms of time
     int wait = 0; // wait time
 
@@ -114,11 +114,11 @@ int averageWaitTime(int burst[], int arrivals[], int len)
 int main(int argc, char *argv[])
 {
     FILE *fp = NULL;
-    int processArray[256]; // 1
-    int burstTime[256];
-    int arrivalTime[256];
-    int numProcesses = 0;
-    char argument2[256];
+    int processArray[256]; // Store process numbers
+    int burstTime[256];    // Store burst times
+    int arrivalTime[256];  // Store arrival times
+    int numProcesses = 0;  // Store number of processes
+    char argument2[256];   // Store argv[2] - "FCFS" or "SJF"
 
     fp = fopen(argv[1], "r");
     fscanf(fp, "%d", &numProcesses);
@@ -136,27 +136,31 @@ int main(int argc, char *argv[])
 
     strcpy(argument2, argv[2]);
 
-    if (strcmp(argument2, "fcfs") == 0)
+    if (strcmp(argument2, "FCFS") == 0)
     {
         printf("\nFirst Come First Serve: ");
         fcfs(numProcesses);
+
         printf("The average waiting time is: %d\n",
                averageWaitTime(burstTime, arrivalTime, numProcesses));
+
         printf("The average turnaround time is: %d\n\n",
                averageTurnaroundTime(burstTime, arrivalTime, numProcesses));
     }
-    else if (strcmp(argument2, "sjf") == 0)
+    else if (strcmp(argument2, "SJF") == 0)
     {
         printf("\nShortest Job First: ");
         bubbleSortSjf2(processArray, burstTime, arrivalTime, numProcesses);
+
         printf("The average waiting time is: %d\n",
                averageWaitTime(burstTime, arrivalTime, numProcesses));
+
         printf("The average turnaround time is: %d\n\n",
                averageTurnaroundTime(burstTime, arrivalTime, numProcesses));
     }
     else
     {
-        printf("Please enter either 'fcfs' or 'sjf'.\n");
+        printf("Please enter either 'FCFS' or 'SJF'.\n");
     }
 
     fclose(fp);
