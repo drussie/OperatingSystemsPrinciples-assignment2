@@ -33,7 +33,7 @@ void bubbleSortSjf2(int processNumbers[], int bursts[], int arrivals[], int len)
     }
 
     for (i = 0; i < len - 1; i++)
-    {
+    { // not sort index[0] it always runs first
         for (j = 1; j < len - 1 - i; j++)
         {
             // sort by burst time
@@ -122,7 +122,6 @@ int main(int argc, char *argv[])
 
     fp = fopen(argv[1], "r");
     fscanf(fp, "%d", &numProcesses);
-    // printf("Number of processes: %d\n", numProcesses);
 
     // Populate processArray with appropriate consecutive integers
     for (int i = 0; i < numProcesses; i++)
@@ -138,15 +137,12 @@ int main(int argc, char *argv[])
     }
 
     strcpy(argument2, argv[2]);
-    // printf("ARGV[2]: %s\n", argument2);
 
     if (strcmp(argument2, "fcfs") == 0)
     {
         printf("\nFirst Come First Serve: ");
         fcfs(numProcesses);
-        // Implement your own code below
-        // printf("Process 2 data are: %d %d\n\n", burstTime[1], arrivalTime[1]);
-        // printf("P1->P2->P3\n");
+
         printf("The average waiting time is: \n");
         printf("The average turnaround time is: %d\n\n",
                averageTurnaroundTime(burstTime, arrivalTime, numProcesses));
