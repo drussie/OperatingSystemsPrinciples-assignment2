@@ -160,7 +160,7 @@ int main(int argc, char *argv[])
     }
     else
     {
-        printf("Please enter either 'FCFS' or 'SJF'.\n");
+        printf("Please enter either 'FCFS' or 'SJF' for argument 2.\n");
     }
 
     fclose(fp);
