@@ -8,10 +8,7 @@
 */
 
 #include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
 #include <string.h>
-#include <ctype.h>
 
 // bubblesort Shortest Job First
 void bubbleSortSjf(int processNumbers[], int bursts[], int arrivals[], int len)
