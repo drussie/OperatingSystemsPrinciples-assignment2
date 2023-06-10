@@ -1,7 +1,4 @@
-all: afterLab4 radixSort MarcosOndruska
-
-afterLab4: afterLab4.o
-	cc -o afterLab4 afterLab4.c 
+all: radixSort MarcosOndruska
 
 radixSort: radixSort.o
 	cc -o radixSort radixSort.c 
