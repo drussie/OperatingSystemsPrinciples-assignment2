@@ -1,3 +1,12 @@
+/*  Name: Marcos Ondruska
+    PantherId: 2685885
+    Program description: This program accepts user input from command line receiving a file and
+    using the data from the file to sort into First Come First Serve or Shortest Job First
+    algorithms. The average waiting time, as well as the average turnaround time will also be
+    calculated for either process. User will enter filename to be read and either "FCFS" or
+     "SJF" after the filename.
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
