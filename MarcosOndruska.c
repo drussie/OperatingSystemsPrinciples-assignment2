@@ -94,6 +94,7 @@ int averageTurnaroundTime(int burst[], int arrivals[], int len)
     for (int i = 1; i < len; i++) // loop from process #2
     {
         wait = cpu - arrivals[i];
+        cpu += burst[i];
         sum += wait + burst[i];
     }
 
