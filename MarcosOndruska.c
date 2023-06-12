@@ -83,24 +83,6 @@ void fcfs(int processes)
     printf("P%d\n", processes);
 }
 
-int averageTurnaroundTime(int burst[], int arrivals[], int len)
-{
-    int sum = burst[0]; // sum of turnaround times
-    int cpu = 0;        // where CPU currently is in terms of time
-    int wait = 0;       // wait time
-
-    cpu += burst[0];
-
-    for (int i = 1; i < len; i++) // loop from process #2
-    {
-        wait = cpu - arrivals[i];
-        cpu += burst[i];
-        sum += wait + burst[i];
-    }
-
-    return sum / len;
-}
-
 int averageWaitTime(int burst[], int arrivals[], int len)
 {
     int sum = 0;  // sum of wat times
@@ -114,6 +96,24 @@ int averageWaitTime(int burst[], int arrivals[], int len)
         wait = cpu - arrivals[i];
         cpu += burst[i];
         sum += wait;
+    }
+
+    return sum / len;
+}
+
+int averageTurnaroundTime(int burst[], int arrivals[], int len)
+{
+    int sum = burst[0]; // sum of turnaround times
+    int cpu = 0;        // where CPU currently is in terms of time
+    int wait = 0;       // wait time
+
+    cpu += burst[0];
+
+    for (int i = 1; i < len; i++) // loop from process #2
+    {
+        wait = cpu - arrivals[i];
+        cpu += burst[i];
+        sum += wait + burst[i];
     }
 
     return sum / len;
